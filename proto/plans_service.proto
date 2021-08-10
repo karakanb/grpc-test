@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "github.com/karakanb/plans-service-grpc-poc/pkg/service/plansservice";
+
+package plansservice;
+
+message PlanRequest {
+  string customerUUID = 1;
+  string sku = 2;
+}
+
+message Plan {
+  string ID = 1;
+  string customerUUID = 2;
+  string sku = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+message PlanCreated {
+  bool success = 1;
+}
+
+message GetPlanRequest {
+  string ID = 1;
+}
+
+service PlansService {
+  rpc CreatePlan(PlanRequest) returns (PlanCreated) {}
+  rpc GetPlan(GetPlanRequest) returns (Plan) {}
+}
