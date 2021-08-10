@@ -11,7 +11,7 @@ proto-generate:
          proto/plans_service.proto
 
 proto-generate-php-client:
-	@mkdir -p
+	@rm -rf proto/php && mkdir -p proto/php
 	@docker run -v `pwd`/proto:/defs namely/protoc-all -f plans_service.proto -l php -o php/
 
 deps:
